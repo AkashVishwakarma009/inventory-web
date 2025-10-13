@@ -1,0 +1,61 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+      <title>Sudhamrit Inventory Management</title>
+      <meta name="description" content="Sudhamrit - Professional inventory management with stock tracking" />
+      
+      <!-- PWA Configuration -->
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="theme-color" content="#1E3A8A" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      
+      <!-- Android WebView Optimizations -->
+      <meta name="format-detection" content="telephone=no">
+      <meta name="format-detection" content="email=no">
+      <meta name="format-detection" content="address=no">
+      
+      <!-- Prevent zoom on input focus -->
+      <style>
+        input[type="text"], input[type="number"], textarea, select {
+          font-size: 16px !important;
+        }
+        
+        /* WebView specific optimizations */
+        body {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+        
+        /* Prevent pull-to-refresh interference */
+        body {
+          overscroll-behavior: none;
+        }
+        
+        /* Safe area handling for modern Android devices */
+        .safe-area-top {
+          padding-top: env(safe-area-inset-top);
+        }
+        
+        .safe-area-bottom {
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+      </style>
+      <meta name="apple-mobile-web-app-title" content="Sudhamrit" />
+      <link rel="apple-touch-icon" href="/assets/111_1750417572953.png" />
+      
+      <!-- App Icons -->
+      <link rel="icon" type="image/png" href="/assets/111_1750417572953.png" />
+      <link rel="shortcut icon" href="/assets/111_1750417572953.png" />
+    </head>
+    <body>
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+
+    </body>
+  </html>
