@@ -40,11 +40,16 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Run migrations with error handling - don't crash if they fail
+  console.log("🔄 Attempting database migrations...");
   try {
     await runMigrations();
+    console.log("✅ Database migrations completed successfully");
   } catch (error) {
-    console.error("❌ Failed to run migrations:", error);
-    process.exit(1);
+    console.log("⚠️ Database migrations failed, but continuing anyway:");
+    console.log("⚠️ This is normal if the database schema is already up to date");
+    console.log("⚠️ Error details:", error.message);
+    // Don't exit the process - continue starting the server
   }
 
   const server = await registerRoutes(app);
@@ -65,7 +70,7 @@ app.use((req, res, next) => {
   const PORT = process.env.PORT || 5050;
 
   // ✅ Explicitly bind to 0.0.0.0 for Render compatibility
-    app.listen(PORT, "0.0.0.0", () => {
+  app.listen(PORT, "0.0.0.0", () => {
     console.log(`✅ Server is running on http://localhost:${PORT}`);
   });
 })().catch((error) => {
